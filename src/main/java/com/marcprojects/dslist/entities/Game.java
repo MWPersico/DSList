@@ -2,7 +2,7 @@ package com.marcprojects.dslist.entities;
 
 import java.util.Objects;
 
-import jakarta.persistence.Column; //Identifica o atributo como coluna da tabela (usado para configurar a coluna no SQL)
+import jakarta.persistence.Column; //Utilizado para configurar coluna da tabela
 import jakarta.persistence.Entity; //Identifica classe como entidade do banco relacional
 import jakarta.persistence.GeneratedValue; // Estabelece a geração de valores automática para o atributo (auto_increment)
 import jakarta.persistence.GenerationType; // Indicador para geração da chave primária
@@ -16,13 +16,15 @@ public class Game {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
-	@Column(name = "game_year")
+	@Column(name = "game_year") //Altera o nome da coluna no banco de dados
 	private Integer year;
 	private String genre;
-	private String Plataforms;
+	private String platforms;
 	private Double score;
 	private String imgUrl;
+	@Column(columnDefinition = "TEXT") //Altera a definição da coluna (evita sobrecarga de tipos)
 	private String shortDescription;
+	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
 	
@@ -31,13 +33,13 @@ public class Game {
 		
 	}
 
-	public Game(Long id, String title, Integer year, String genre, String plataforms, Double score, String imgUrl, String shortDescription, String longDescription) {
+	public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl, String shortDescription, String longDescription) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.year = year;
 		this.genre = genre;
-		Plataforms = plataforms;
+		this.platforms = platforms;
 		this.score = score;
 		this.imgUrl = imgUrl;
 		this.shortDescription = shortDescription;
@@ -78,11 +80,11 @@ public class Game {
 	}
 
 	public String getPlataforms() {
-		return Plataforms;
+		return platforms;
 	}
 
-	public void setPlataforms(String plataforms) {
-		Plataforms = plataforms;
+	public void setPlataforms(String platforms) {
+		this.platforms = platforms;
 	}
 
 	public Double getScore() {
