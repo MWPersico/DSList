@@ -1,16 +1,15 @@
 package com.marcprojects.dslist.entities;
 
 import java.util.Objects;
-
 import jakarta.persistence.Column; //Utilizado para configurar coluna da tabela
 import jakarta.persistence.Entity; //Identifica classe como entidade do banco relacional
 import jakarta.persistence.GeneratedValue; // Estabelece a geração de valores automática para o atributo (auto_increment)
 import jakarta.persistence.GenerationType; // Indicador para geração da chave primária
 import jakarta.persistence.Id; //Identifica o atributo como chave primária
-import jakarta.persistence.Table; //Identifica classe como sendo do tipo tabela
+import jakarta.persistence.Table; //Identifica classe como sendo uma tabela
 
-@Entity
-@Table(name = "tb_game")
+@Entity //Identificado como entidade (para persistência)
+@Table(name = "tb_game") // Identifica a entidade como tabela do banco relacional
 public class Game {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,12 +28,9 @@ public class Game {
 	
 	
 	//Constructors
-	public Game() {
-		
-	}
+	public Game() {}
 
 	public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl, String shortDescription, String longDescription) {
-		super();
 		this.id = id;
 		this.title = title;
 		this.year = year;
@@ -137,3 +133,4 @@ public class Game {
 		return Objects.equals(id, other.id);
 	}
 }
+//classe 'Game', entidade do sistema, mapeamento objeto-relacional incluso
