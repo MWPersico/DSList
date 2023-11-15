@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired; //Injeção de dependências no objeto
 import org.springframework.web.bind.annotation.GetMapping; //Identifica o método padrão para verbo GET HTTP
+import org.springframework.web.bind.annotation.PathVariable; //Relaciona parâmetro com o parâmetro de requisição
 import org.springframework.web.bind.annotation.RequestMapping; // Mapeia e configura o end-point da API Rest
 import org.springframework.web.bind.annotation.RestController; // RestController do Spring
 
+import com.marcprojects.dslist.dto.GameDTO;
 import com.marcprojects.dslist.dto.GameMinDTO;
 import com.marcprojects.dslist.services.GameService;
 
@@ -20,6 +22,11 @@ public class GameController {
 	@GetMapping
 	public List<GameMinDTO> findAll(){
 		return gameService.findAll();
+	}
+	
+	@GetMapping(value = "/{id}") //configura parâmetro de requisição
+	public GameDTO findById(@PathVariable Long id) {
+		return gameService.findById(id);
 	}
 }
 //Classe 'GameController', interface do back-end, controlador da API para servir dados de objetos 'Game' (DTOs de Game)
